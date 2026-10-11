@@ -16,22 +16,35 @@
     <meta property="og:description"
         content="Estudiante de Ingeniería de Ejecución en Informática apasionado por el backend, las bases de datos y el desarrollo web.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="img/portada.PNG">
+    <meta property="og:url" content="https://rogerin10.github.io/">
+    <meta property="og:image" content="https://rogerin10.github.io/img/portada.webp">
 
-    <link rel="icon" type="image/png" href="img/portada.PNG">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231c1c1a'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='34' font-weight='600' fill='%23faf9f6' text-anchor='middle'%3ER%3C/text%3E%3Crect x='18' y='48' width='28' height='3' fill='%23fffb1c'/%3E%3C/svg%3E">
 
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Outfit:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <section class="hero">
+    <header>
+        <nav class="site-nav" aria-label="Navegación principal">
+            <ul>
+                <li><a href="#sobre">Sobre mí</a></li>
+                <li><a href="#tecnologias">Tecnologías</a></li>
+                <li><a href="#destacados">Destacados</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#educacion">Educación</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <section class="hero">
         <div class="hero-info">
             <span class="hero-badge">Ingeniería de Ejecución en Informática</span>
             <h1>Roger Benjamin Fuentes Díaz</h1>
 
-            <!-- ===== NUEVO: rol + descripción profesional del Hero ===== -->
             <p class="hero-role">Computer Engineering Student</p>
             <p class="hero-desc">
                 Backend Developer • Estudiante de Ingeniería de Ejecución en Informática apasionado por el
@@ -41,24 +54,22 @@
 
             <div class="hero-actions">
                 <a href="CV.pdf" download class="btn btn-primary">📄 Descargar CV</a>
-                <a href="https://github.com/Rogerin10" target="_blank" class="btn btn-outline">💻 GitHub</a>
-                <a href="https://www.linkedin.com/in/rogerin-undefined-535a56418/" target="_blank"
-                    class="btn btn-outline">💼 LinkedIn</a>
+                <a href="https://github.com/Rogerin10" target="_blank" rel="noopener" class="btn btn-outline">💻 GitHub</a>
             </div>
-            <!-- ===== FIN NUEVO ===== -->
         </div>
         <div class="hero-avatar">
-            <img src="img/portada.PNG" alt="Logo Rogerin">
+            <img src="img/portada.webp" alt="Logo Rogerin">
         </div>
     </section>
+    </header>
 
+    <main>
 
-    <section>
+    <section id="sobre">
         <div class="title-container">
             <h2>About me</h2>
         </div>
         <div class="card">
-            <!-- ===== NUEVO: texto "About me" ampliado y profesional ===== -->
             <p>
                 Soy estudiante de Ingeniería de Ejecución en Informática, con especial interés en el desarrollo
                 backend, el diseño de bases de datos relacionales y la construcción de aplicaciones web robustas.
@@ -68,15 +79,13 @@
                 personales que resuelven problemas reales, además de ser amante de los gatos y apasionado por la
                 tecnología en general.
             </p>
-            <!-- ===== FIN NUEVO ===== -->
             <div class="about-tags">
                 <span> <span>💻 Estudiante | 🎮 Gamer</span> | <span>🎧 K-pop lover</span> </span>
             </div>
         </div>
     </section>
 
-    <!-- ===== NUEVO: Tecnologías reorganizadas por categorías (mismos badges, mismo diseño) ===== -->
-    <section>
+    <section id="tecnologias">
         <div class="title-container">
             <h2>Tecnologías</h2>
         </div>
@@ -121,16 +130,86 @@
 
         </div>
     </section>
-    <!-- ===== FIN NUEVO ===== -->
 
-    <section>
+    <section id="destacados">
+        <div class="title-container">
+            <h2>Proyectos destacados</h2>
+        </div>
+
+        <div class="project-grid">
+
+            <div class="card project-card">
+                <h3>Visor WebXR de Productos 3D</h3>
+                <p>
+                    Visor web interactivo para explorar modelos 3D de productos, con soporte para
+                    experiencias de realidad aumentada y virtual.
+                </p>
+                <div class="tech-row">
+                    <span class="tech-pill">Babylon.js</span>
+                    <span class="tech-pill">TypeScript</span>
+                    <span class="tech-pill">Vite</span>
+                    <span class="tech-pill">WebXR</span>
+                </div>
+                <a href="https://magnificent-babka-c83488.netlify.app/" target="_blank" rel="noopener"
+                    class="btn project-demo-link">▶ Ver demo</a>
+            </div>
+
+            <div class="card project-card">
+                <h3>Extintor 360°</h3>
+                <p>
+                    Experiencia educativa de seguridad contra incendios que combina simulación 3D,
+                    estaciones gamificadas y progresión por niveles.
+                </p>
+                <div class="tech-row">
+                    <span class="tech-pill">TypeScript</span>
+                    <span class="tech-pill">Vite</span>
+                    <span class="tech-pill">Simulación 3D</span>
+                    <span class="tech-pill">Gamificación</span>
+                </div>
+                <a href="https://dainty-pie-29b9b2.netlify.app/" target="_blank" rel="noopener"
+                    class="btn project-demo-link">▶ Ver demo</a>
+            </div>
+
+            <div class="card project-card">
+                <h3>Curso interactivo de RCP</h3>
+                <p>
+                    Curso digital de reanimación cardiopulmonar con contenidos y actividades
+                    interactivas organizadas por niveles.
+                </p>
+                <div class="tech-row">
+                    <span class="tech-pill">HTML</span>
+                    <span class="tech-pill">CSS</span>
+                    <span class="tech-pill">TypeScript</span>
+                </div>
+                <a href="https://fluffy-pixie-70a8ec.netlify.app/" target="_blank" rel="noopener"
+                    class="btn project-demo-link">▶ Ver demo</a>
+            </div>
+
+            <div class="card project-card">
+                <h3>Curso de Seguridad Portuaria</h3>
+                <p>
+                    Curso interactivo de seguridad portuaria con módulos formativos, actividades y
+                    escenarios 3D integrados en la experiencia de aprendizaje.
+                </p>
+                <div class="tech-row">
+                    <span class="tech-pill">Babylon.js</span>
+                    <span class="tech-pill">TypeScript</span>
+                    <span class="tech-pill">Vite</span>
+                </div>
+                <a href="https://relaxed-halva-fda698.netlify.app/" target="_blank" rel="noopener"
+                    class="btn project-demo-link">▶ Ver demo</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="proyectos">
         <div class="title-container">
             <h2>Proyectos Académicos</h2>
         </div>
 
         <div class="project-grid">
 
-            <!-- ===== NUEVO: Proyecto destacado movido al primer lugar ===== -->
             <div class="card project-card featured">
                 <span class="featured-badge">⭐ Proyecto Destacado</span>
                 <div class="project-icon"></div>
@@ -169,7 +248,6 @@
                     <span class="tech-pill">Render</span>
                 </div>
             </div>
-            <!-- ===== FIN NUEVO ===== -->
 
             <!-- Proyecto -->
             <div class="card project-card">
@@ -297,7 +375,7 @@
 
         </div>
     </section>
-    <section>
+    <section id="educacion">
         <div class="title-container">
             <h2>Educación</h2>
         </div>
@@ -305,42 +383,31 @@
             <div class="edu-box">
                 <strong>Universidad Católica de la Santísima Concepción</strong>
                 <p>Ingeniería de Ejecución Informática (4to año).</p>
-                <!-- ===== NUEVO: línea de fechas / avance de la carrera ===== -->
                 <p class="edu-meta">📅 2023 – Actualidad &nbsp;|&nbsp; 4° Año &nbsp;|&nbsp; Ingeniería de Ejecución
                     en Informática</p>
-                <!-- ===== FIN NUEVO ===== -->
             </div>
         </div>
 
     </section>
 
+    </main>
 
-    <!-- ===== NUEVO: Footer ampliado con disponibilidad, ubicación y contacto ===== -->
-    <footer class="footer">
+    <footer id="contacto" class="footer">
         <div class="footer-status">
-            <span class="status-badge">🟢 Disponible para práctica profesional</span>
             <span class="status-badge">📍 Chile 🇨🇱</span>
         </div>
 
         <div class="footer-social-links">
-            <a href="https://github.com/Rogerin10" target="_blank" class="social-circle" aria-label="GitHub">
+            <a href="https://github.com/Rogerin10" target="_blank" rel="noopener" class="social-circle" aria-label="GitHub">
                 <img src="img/github-mark-white.png" alt="GitHub">
             </a>
-            <a href="https://www.linkedin.com/in/rogerin-undefined-535a56418/" target="_blank" class="social-circle"
-                aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="#ffffff" aria-hidden="true">
-                    <path
-                        d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z" />
-                </svg>
-            </a>
-            <a href="https://www.instagram.com/rogerin10_/?hl=es" target="_blank" class="social-circle"
+            <a href="https://www.instagram.com/rogerin10_/?hl=es" target="_blank" rel="noopener" class="social-circle"
                 aria-label="Instagram">
-                <img src="img/IG.png" alt="Instagram">
+                <img src="img/IG.webp" alt="Instagram">
             </a>
         </div>
         <p class="footer-copyright">© Copyright. All rights reserved.</p>
     </footer>
-    <!-- ===== FIN NUEVO ===== -->
 
 </body>
 

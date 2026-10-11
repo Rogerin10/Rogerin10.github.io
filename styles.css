@@ -1,489 +1,451 @@
 /* ============================================================
-   VARIABLES GLOBALES
+   SISTEMA VISUAL EDITORIAL
    ============================================================ */
 :root {
-  --bg: #553e92; /* Color morado del fondo general */
-  --text: #01080a; /* Color casi negro para textos */
-  --main: #626960; /* Gris verdoso para acentos */
-  --yellow: #fffb1c; /* Amarillo brillante para destacar */
-  --border: 3px solid #020405; /* Grosor y color de los bordes "cartoon" */
-  --brutal: 6px 6px 0px #bd5b22; /* Sombra rígida (Neobrutalismo) en naranja */
+  --bg: #faf9f6; /* Blanco cálido */
+  --text: #1c1c1a; /* Negro suave */
+  --text-secondary: #555550; /* Gris medio (contraste AA sobre --bg) */
+  --accent: #fffb1c; /* Amarillo, solo detalles puntuales */
+  --border: #e5e2dc; /* Gris claro discreto */
+  --surface: #ffffff; /* Superficie ligeramente diferenciada */
+  --maxw: 720px; /* Ancho máximo de lectura */
+  --font-body: "Outfit", system-ui, -apple-system, sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
 }
 
-/* ============================================================
-   ESTILOS BASE
-   ============================================================ */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
 body {
-  font-family: "Outfit", sans-serif;
+  font-family: var(--font-body);
   background: var(--bg);
   color: var(--text);
-  margin: 0; /* Elimina el margen por defecto del navegador */
+  margin: 0;
+  line-height: 1.6;
+  font-size: 1rem;
 }
 
-section {
-  padding: 30px 10%; /* Espaciado interno: 30px arriba/abajo, 10% a los lados */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Foco visible para teclado */
+a:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 /* ============================================================
-   TÍTULOS DE SECCIÓN
+   SECCIONES
    ============================================================ */
-.title-container {
-  display: block; /* Ocupa toda la línea para que el h2 empiece solo */
-  margin-bottom: 10px;
+section {
+  max-width: calc(var(--maxw) + 20%);
+  margin: 0 auto;
+  padding: 72px 10%;
+  scroll-margin-top: 24px;
+}
+
+/* ============================================================
+   NAVEGACIÓN
+   ============================================================ */
+.site-nav {
+  border-bottom: 1px solid var(--border);
+  padding: 20px 10%;
+}
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  margin: 0;
+  padding: 0;
+  max-width: calc(var(--maxw) + 20%);
+  margin-inline: auto;
+}
+
+.site-nav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.site-nav a:hover {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+/* ============================================================
+   TIPOGRAFÍA
+   ============================================================ */
+h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 12px 0 16px;
 }
 
 h2 {
-  font-size: 2.2rem;
-  margin: 0;
-  display: inline-block; /* El subrayado solo llega hasta donde termina el texto */
-  border-bottom: 5px solid var(--yellow); /* Línea amarilla gruesa bajo el título */
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 0 0 28px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+
+h3 {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.15rem;
+  margin: 0 0 8px;
+}
+
+p {
+  margin: 0 0 16px;
 }
 
 /* ============================================================
-   TARJETAS (ESTILO COMPACTO)
+   HERO
    ============================================================ */
-.card {
-  border: var(--border);
-  border-radius: 20px; /* Esquinas muy redondeadas tipo cartoon */
-  box-shadow: var(--brutal); /* Aplica la sombra sólida desplazada */
-  background: white;
-  padding: 15px 25px;
-  margin-top: 5px;
-  display: inline-block; /* La tarjeta se ajusta al ancho del texto interno */
-  width: auto;
-  max-width: 100%; /* Asegura que no se salga de la pantalla en móviles */
-}
-
-/* ======== PORTADA ======== */
 .hero {
-  background: #f0f7ff; /* Fondo azul muy claro para contraste */
-  display: flex; /* Alinea info y avatar en horizontal */
-  align-items: center; /* Centra los elementos verticalmente */
-  justify-content: space-between; /* Separa el texto del avatar a los extremos */
-  border-bottom: var(--border); /* Línea divisoria inferior */
-  padding: 40px 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  max-width: calc(var(--maxw) + 20%);
+  margin: 0 auto;
+  padding: 80px 10%;
 }
 
-.hero-info h1 {
-  font-size: 3.5rem;
-  margin: 10px 0;
+.hero-info {
+  max-width: 560px;
 }
 
 .hero-badge {
-  background: var(--yellow);
-  padding: 5px 15px;
-  border: var(--border);
-  border-radius: 50px; /* Estilo de píldora redonda */
-  font-weight: bold;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+}
+
+.hero-role {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin: 0 0 12px;
+}
+
+.hero-desc {
+  color: var(--text-secondary);
+  max-width: 48ch;
+  margin: 0 0 28px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
+/* Enlaces editoriales, no botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 6px 2px;
+  border-bottom: 2px solid var(--text);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover {
+  border-bottom-color: var(--accent);
 }
 
 .hero-avatar {
-  border: var(--border);
-  border-radius: 50%; /* Círculo perfecto */
   width: 200px;
   height: 200px;
-  overflow: hidden; /* Corta la imagen si es más grande que el círculo */
-  background: white;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--border);
 }
 
 .hero-avatar img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Mantiene la proporción de la imagen sin deformarla */
+  object-fit: cover;
 }
 
-/* ======== TECNOLOGÍAS (SKILLS) ======== */
+/* ============================================================
+   TARJETAS (superficie sutil, sin bordes gruesos)
+   ============================================================ */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px 32px;
+}
+
+.title-container {
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   TECNOLOGÍAS
+   ============================================================ */
+.tech-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.tech-group-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin: 0 0 14px;
+  letter-spacing: 0.02em;
+}
+
 .skills-container {
   display: flex;
-  flex-wrap: wrap; /* Si no caben, saltan a la siguiente línea */
-  gap: 10px; /* Espacio de 10px entre cada etiqueta */
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
+/* Etiquetas discretas, sin colores intensos ni apariencia de botón */
 .skill-tag {
-  padding: 6px 12px;
-  border: var(--border);
-  border-radius: 10px;
-  font-weight: bold;
-  color: white;
-  box-shadow: 3px 3px 0px #000; /* Sombra negra sólida más pequeña */
-  transition: all 0.2s ease; /* Suaviza la animación del hover */
-  cursor: pointer; /* Cambia el cursor para indicar interactividad */
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 5px 12px;
 }
 
-/* Efecto al pasar el mouse sobre una tecnología */
-.skill-tag:hover {
-  transform: translateY(-5px); /* Mueve la etiqueta 5px hacia arriba */
-  box-shadow: 6px 6px 0px #000; /* Aumenta la sombra para dar efecto de profundidad */
-}
-
-/* Colores personalizados para cada lenguaje */
-.java {
-  background: #e76f51;
-}
-.html {
-  background: #f4a261;
-}
-.css {
-  background: #2a9d8f;
-}
-.js {
-  background: #e9c46a;
-  color: #2d3436;
-}
-.csharp {
-  background: #4d96ff;
-}
-.python {
-  background: #e3f302;
-  color: #2d3436;
-}
-.sql {
-  background: #a2d2ff;
-  color: #2d3436;
-}
-
-/* Git */
-.git {
-  background: #f1502f;
-}
-
-/* APIs */
-.api {
-  background: #9b5de5;
-}
-
-/* Tkinter */
-.tkinter {
-  background: #43aa8b;
-}
-
-/* SQLite */
-.sqlite {
-  background: #577590;
-}
-
-/* PostgreSQL */
-.postgresql {
-  background: #336791;
-}
-
-.skills-container {
-  justify-content: center;
-}
-
-/* ======== GRID DE PROYECTOS ======== */
+/* ============================================================
+   PROYECTOS
+   ============================================================ */
 .project-grid {
   display: grid;
-  /* Crea columnas automáticas de mínimo 280px que llenan el espacio disponible */
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-  margin-top: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
 }
 
 .project-card {
   display: flex;
-  flex-direction: column; /* Organiza icono, título y texto en vertical */
-  width: 100%; /* Se ajusta al ancho de su celda en la rejilla */
-  box-sizing: border-box; /* El padding no infla el ancho de la tarjeta */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  text-decoration: none;
-  color: inherit;
+  flex-direction: column;
+  position: relative;
 }
 
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 8px 8px 0px #bd5b22;
+.project-card p {
+  color: var(--text-secondary);
+  flex-grow: 1;
 }
 
-.project-demo {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 6px 14px;
-  background: var(--yellow);
-  border: var(--border);
-  border-radius: 8px;
-  font-weight: bold;
+/* Enlace de demo en tarjetas destacadas */
+.project-demo-link {
+  align-self: flex-start;
+  margin-top: 16px;
   font-size: 0.9rem;
-  text-align: center;
 }
 
-/* ======== CONTENEDOR TECNOLOGÍAS ======== */
+.project-icon {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.featured {
+  border-color: var(--accent);
+}
+
+.featured-badge {
+  position: absolute;
+  top: -11px;
+  left: 24px;
+  background: var(--accent);
+  color: var(--text);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 2px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--text);
+}
+
 .tech-row {
   display: flex;
-  flex-wrap: wrap; /* Permite bajar de línea */
-
-  gap: 8px; /* Espaciado moderno */
-
-  margin-top: auto; /* Empuja las etiquetas al borde inferior de la tarjeta */
-  padding-top: 16px; /* Mantiene separación mínima respecto al texto */
-  align-content: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 16px;
 }
 
-/* ======== PILLS ======== */
 .tech-pill {
-  font-size: 0.8rem;
-
-  background: #ace721;
-
-  padding: 4px 10px;
-
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
   border-radius: 999px;
-  border: 1px solid #2d3436;
-
-  white-space: nowrap; /* 👈 evita cortes feos */
+  padding: 3px 10px;
+  white-space: nowrap;
 }
 
-/* ======== EDUCACIÓN ======== */
+/* ============================================================
+   EDUCACIÓN
+   ============================================================ */
 .edu-box {
-  border-left: 4px dashed var(--text); /* Línea vertical punteada */
+  border-left: 2px solid var(--accent);
   padding-left: 20px;
-  position: relative;
-  margin-left: 10px;
 }
 
-/* Icono del birrete de graduación */
-.edu-box::before {
-  content: "🎓";
-  position: absolute; /* Se posiciona respecto a .edu-box */
-  left: -18px;
-  top: 0;
-  background: transparent; /* Sin fondo para integrarse con la tarjeta */
+.edu-box strong {
+  font-weight: 500;
 }
 
-/* FOOTER */
+.edu-box p {
+  color: var(--text-secondary);
+  margin: 4px 0;
+}
+
+.edu-meta {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
 .footer {
-  background-color: #000000; /* Fondo negro para contraste máximo */
-  padding: 50px 10%;
+  background: var(--text);
+  color: #f0efec;
   text-align: center;
-  color: #ffffff;
-  border-top: 3px solid #020405;
+  padding: 56px 10%;
+  margin-top: 32px;
+}
+
+.footer-status {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.status-badge {
+  font-size: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  padding: 6px 16px;
+  color: #f0efec;
 }
 
 .footer-social-links {
   display: flex;
-  justify-content: center; /* Centra los iconos horizontalmente */
+  justify-content: center;
   gap: 20px;
-  margin-bottom: 25px;
+  margin-bottom: 28px;
 }
 
 .social-circle {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
-  border: 1.5px solid #ffffff; /* Borde circular blanco fino */
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 50%;
-  text-decoration: none;
-  transition: all 0.3s ease; /* Suaviza el efecto hover */
-  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.social-circle:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .social-circle img {
-  width: 30px; /* Tamaño del logo de GitHub */
-  height: 27px;
+  width: 28px;
+  height: 26px;
   object-fit: contain;
 }
 
-.mail-icon {
-  font-size: 1.2rem; /* Tamaño del emoji de sobre */
-}
-
-/* Efecto hover en los círculos sociales */
-.social-circle:hover {
-  background-color: rgba(255, 255, 255, 0.15); /* Ligero brillo blanco */
-  transform: translateY(-4px); /* Salto hacia arriba al pasar el mouse */
-}
-
 .footer-copyright {
-  font-size: 0.85rem;
-  letter-spacing: 1.5px; /* Espaciado de letras elegante */
-  opacity: 0.9;
-  margin: 0;
-  font-weight: 400;
-}
-
-/* ================================================================
-   NUEVOS ESTILOS — MEJORAS PORTAFOLIO
-   (No modifica reglas existentes, solo agrega nuevas clases)
-   ================================================================ */
-
-/* ======== HERO: rol, descripción y botones ======== */
-.hero-info {
-  max-width: 640px;
-}
-
-.hero-role {
-  font-size: 1.15rem;
-  font-weight: bold;
-  color: var(--main);
-  margin: 0 0 12px 0;
-}
-
-.hero-desc {
-  font-size: 1rem;
-  line-height: 1.55;
-  margin: 0 0 20px 0;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  border: var(--border);
-  border-radius: 12px;
-  font-weight: bold;
-  font-family: "Outfit", sans-serif;
-  font-size: 0.95rem;
-  text-decoration: none;
-  color: var(--text);
-  background: white;
-  box-shadow: 4px 4px 0px #000;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-  cursor: pointer;
-}
-
-.btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 6px 6px 0px #000;
-}
-
-.btn-primary {
-  background: var(--yellow);
-}
-
-.btn-outline {
-  background: white;
-}
-
-/* ======== TECNOLOGÍAS POR CATEGORÍA ======== */
-.tech-categories {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-  margin-top: 10px;
-}
-
-.tech-category {
-  display: block;
-  width: auto;
-}
-
-.tech-group-title {
-  font-size: 1.05rem;
-  margin: 0 0 12px 0;
-  display: inline-block;
-  border-bottom: 3px solid var(--yellow);
-  padding-bottom: 4px;
-}
-
-/* ======== PROYECTO DESTACADO ======== */
-.project-card.featured {
-  position: relative;
-  border-color: var(--yellow);
-  box-shadow: 6px 6px 0px var(--yellow);
-}
-
-.project-card.featured:hover {
-  box-shadow: 9px 9px 0px var(--yellow);
-}
-
-.featured-badge {
-  position: absolute;
-  top: -14px;
-  left: 20px;
-  background: var(--yellow);
-  border: var(--border);
-  border-radius: 20px;
-  padding: 4px 14px;
   font-size: 0.8rem;
-  font-weight: bold;
-  box-shadow: 3px 3px 0px #000;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+  margin: 0;
 }
 
-/* Tarjetas de proyecto: mismo alto y texto que nunca rompe el diseño */
-.project-card {
-  height: 100%;
-  min-height: 280px; /* Altura mínima uniforme para todas las tarjetas */
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about-tags {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: 16px;
 }
 
-.project-card p {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3; /* Máximo 3 líneas */
-  line-clamp: 3;
-  overflow: hidden;
-  margin: 8px 0 0 0;
-}
-
-.project-grid {
-  align-items: stretch;
-}
-
-/* ======== EDUCACIÓN: línea de fechas ======== */
-.edu-meta {
-  font-size: 0.85rem;
-  font-weight: bold;
-  color: var(--main);
-  margin-top: 8px;
-}
-
-/* ======== FOOTER: disponibilidad y ubicación ======== */
-.footer-status {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 25px;
-}
-
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: transparent;
-  border: 1.5px solid #ffffff;
-  border-radius: 50px;
-  padding: 6px 16px;
-  font-size: 0.85rem;
-  color: #ffffff;
-}
-
-/* ======== UX: pequeñas transiciones adicionales ======== */
-.skill-tag,
-.tech-pill,
-.social-circle,
-.status-badge {
-  transition: all 0.25s ease;
-}
-
-.tech-pill:hover {
-  transform: translateY(-2px);
-  background: var(--yellow);
-}
-
-/* ======== RESPONSIVE: Hero en móvil ======== */
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 @media (max-width: 768px) {
+  section {
+    padding: 56px 6%;
+  }
+
+  .site-nav {
+    padding: 16px 6%;
+  }
+
   .hero {
-    flex-direction: column;
-    text-align: center;
-    gap: 20px;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 56px 6%;
   }
 
-  .hero-actions {
-    justify-content: center;
+  .hero-avatar {
+    width: 140px;
+    height: 140px;
   }
 
-  .hero-info {
-    max-width: 100%;
+  .card {
+    padding: 22px 20px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    padding: 48px 6%;
   }
 }
